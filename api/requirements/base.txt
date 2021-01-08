@@ -1,5 +1,8 @@
 # Base
 pytz==2020.5
+python-slugify==1.2.6
+pillow==8.1.0
+psycopg2==2.8.6
 
 # Django
 django>=3.1.5
@@ -10,3 +13,9 @@ django-filter==2.4.0
 
 #PyJWT
 pyjwt==2.0.0
+
+# Passwords security
+argon2-cffi==18.3.0
+
+# Static files
+whitenoise==5.2.0
