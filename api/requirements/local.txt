@@ -1,0 +1,8 @@
+-r ./base.txt
+
+# Debugging
+ipdb==0.11
+
+# Tools
+httpie==2.3.0
+django-extensions==2.1.4

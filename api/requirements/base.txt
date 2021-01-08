@@ -1,0 +1,12 @@
+# Base
+pytz==2020.5
+
+# Django
+django>=3.1.5
+
+#Django REST Framework
+djangorestframework==3.12.2
+django-filter==2.4.0
+
+#PyJWT
+pyjwt==2.0.0
