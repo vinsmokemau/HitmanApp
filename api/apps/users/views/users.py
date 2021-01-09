@@ -5,9 +5,9 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth import views as auth_views
 from django.urls import reverse, reverse_lazy
 from django.views.generic import (
-	FormView,
-	DetailView,
-	UpdateView,
+    FormView,
+    DetailView,
+    UpdateView,
 )
 
 # Models

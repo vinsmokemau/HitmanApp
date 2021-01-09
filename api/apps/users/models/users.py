@@ -9,6 +9,7 @@ from apps.utils.models import BaseModel
 
 
 class User(BaseModel, AbstractUser):
+
     """
     User model.
     
@@ -17,24 +18,30 @@ class User(BaseModel, AbstractUser):
     """
 
     email = models.EmailField(
-        'email address',
         unique=True,
         error_messages={
             'unique': 'A user with that email already exists.'
         }
     )
 
+    is_active = models.BooleanField(
+        'status',
+        default=True,
+    )
+
+    biography = models.TextField(max_length=500, blank=True)
+
     is_manager = models.BooleanField(
-    	'manager',
-    	default=False,
+        'manager',
+        default=False,
     )
 
     manager = models.ForeignKey(
-    	'manager.Manger',
-    	related_name='hitmen',
-    	blank=True,
-    	null=True,
-    	on_delete=models.SET_NULL,
+        'manager.Manger',
+        related_name='lackeys',
+        blank=True,
+        null=True,
+        on_delete=models.SET_NULL,
     )
 
     USERNAME_FIELD = 'email'
