@@ -9,7 +9,6 @@ from apps.utils.models import BaseModel
 
 
 class User(BaseModel, AbstractUser):
-
     """
     User model.
     
@@ -23,21 +22,16 @@ class User(BaseModel, AbstractUser):
             'unique': 'A user with that email already exists.'
         }
     )
-
     is_active = models.BooleanField(
         'status',
         default=True,
     )
-
     biography = models.TextField(max_length=500, blank=True)
-
     is_manager = models.BooleanField(
-        'manager',
         default=False,
     )
-
     manager = models.ForeignKey(
-        'manager.Manger',
+        'users.Manager',
         related_name='lackeys',
         blank=True,
         null=True,
@@ -56,4 +50,5 @@ class User(BaseModel, AbstractUser):
         return self.username
 
     def get_absolute_url(self):
-        return ('')
+        from django.urls import reverse
+        return reverse('users:detail', args=[self.id])

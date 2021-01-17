@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block head_content %}
+  <title>New Hit</title>
+{% endblock %}
+
+{% block body %}
+
+  <form action="{% url 'hits:create' %}" method="POST">
+    {% csrf_token %}
+
+    {{ form.as_p }}
+
+    <button class="btn btn-secondary btn-block mt-5" type="submit">Create</button>
+  </form>
+
+{% endblock %}

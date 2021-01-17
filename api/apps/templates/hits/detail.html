@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block head_content %}
+  <title>{{ hit }}</title>
+{% endblock%}
+
+{% block body %}
+
+  <div class="container mt-5">
+
+    <h2>
+      {{ hit }} for: <a href="{{ hit.hitman.get_absolute_url }}">{{ hit.hitman }}</a>
+    </h2>
+    {% if request.user.id == 1 or request.user == hit.creator %}
+      {% if hit.status == 'Assigned' %}
+        <a href="{% url 'hits:update' hit.id %}">Change hitman</a>
+      {% endif %}
+    {% endif %}
+
+    <hr>
+
+    <p>Status: {{ hit.status }}</p>
+    {% if request.user.id == 1 or request.user == hit.hitman or request.user == hit.creator %}
+      {% if hit.status == 'Assigned' %}
+        <a href="{% url 'hits:completed' hit.id %}">Completed</a>
+        <a href="{% url 'hits:failed' hit.id %}">Failed</a>
+      {% endif %}
+    {% endif %}
+    <p>Description: {{ hit.description }}</p>
+    <p>Created by: {{ hit.creator }}</p>
+
+  </div>
+
+{% endblock %}

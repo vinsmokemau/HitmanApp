@@ -26,3 +26,7 @@ class Manager(BaseModel):
 
     def __str__(self):
         return str(self.user)
+
+    def get_absolute_url(self):
+        from django.urls import reverse
+        return reverse('users:detail', args=[self.user.id])
