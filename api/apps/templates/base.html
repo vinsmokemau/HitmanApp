@@ -1,0 +1,47 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    {% block head_content %}{% endblock %}
+
+    {# Global styles #}
+    {% block site_css %}
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+      <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" crossorigin="anonymous" />
+    {% endblock %}
+
+    {# Page-specific styles #}
+    {% autoescape off %}
+      {% block page_css %}{% endblock %}
+    {% endautoescape %}
+
+    {% block extra_head %}
+      {# Extra header stuff (scripts, styles, metadata, etc) #}
+    {% endblock %}
+
+  </head>
+  <body class="{% block body_class %}{% endblock %}">
+
+    {% include "nav.html" %}
+    
+    {% block body %}
+      {# Page content will go here #}
+    {% endblock %}
+
+    {# Modal HTML #}
+    {% block modals %}
+    {% endblock %}
+
+    {# Global javascript #}
+    {% block site_js %}
+    {% endblock %}
+
+    {# Page javascript #}
+    {% autoescape off %}
+      {% block page_js %}
+      {% endblock %}
+    {% endautoescape %}
+    
+  </body>
+</html>

@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{% block head_content %}
+  <title>{{ user }}</title>
+{% endblock%}
+
+{% block body %}
+
+  <div class="container mt-5">
+
+    <h2>
+      {{ user.first_name }} {{ user.last_name }}
+      {% if user == request.user %}
+        <a href=""
+          class="ml-5 btn btn-sm btn-outline-info"
+        >
+          Edit profile
+        </a>
+      {% endif %}
+    </h2>
+
+    <p>Email: {{ user.email }}</p>
+    {% if user.is_active %}
+      <p>Status: Activo</p>
+      {% if request.user.id == 1 or request.user == user.manager.user %}
+        <a href="{% url 'users:inactive' user.id %}">Change to Inative</a>
+      {% endif %}
+    {% else %}
+      <p>Status: Inactivo</p>
+    {% endif %}
+    <p>Biography: {{ user.biography }}</p>
+
+    {% if request.user.id == 1 and user.is_manager %}
+      <hr>
+      <h3>Lackeys</h3>
+      <ul>
+        {% for lackey in user.as_manager.lackeys.all %}
+          <li><a href="{{ lackey.get_absolute_url }}">{{ lackey }}</a></li>
+        {% empty %}
+          <p>No Lackeys Managing</p>
+        {% endfor %}
+      </ul>
+      <a href="{{ add_lackey_url }}">Add Lackey</a>
+    {% endif %}
+
+  </div>
+
+{% endblock %}
