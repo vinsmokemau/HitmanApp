@@ -1,14 +1,6 @@
 # API
 
-## Installation
-You need to have python3, pip and virtualenv or virtualenv wrapper
-
-```sh
-pip install -r requirements/local.txt
-```
-
 ## Run project
-
 
 ```sh
 docker-compose -f local.yml build
