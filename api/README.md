@@ -9,24 +9,10 @@ pip install -r requirements/local.txt
 
 ## Run project
 
-Check for issues:
-```sh
-python manage.py check
-```
 
-If you have to update the db because changes in models.py:
 ```sh
-python manage.py makemigrations
-```
-
-Update db with migrations:
-```sh
-python manage.py migrate
-```
-
-Run server:
-```sh
-python manage.py runserver
+docker-compose -f local.yml build
+docker-compose -f local.yml up
 ```
 
 ## Contact
